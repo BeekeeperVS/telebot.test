@@ -1,5 +1,7 @@
 <?php
 
+use yii\bootstrap\BootstrapAsset;
+
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
 
@@ -7,6 +9,7 @@ $config = [
     'id' => 'basic',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'layout' => 'admin',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -42,15 +45,34 @@ $config = [
                 ],
             ],
         ],
-        'db' => $db,
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
+        'assetManager' => [
+            'bundles' => [
+                BootstrapAsset::class => [
+                    'css' => [
+                        'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+                        'https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css',
+                    ],
+                    'js' => [
+                        'https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js'
+                    ],
+                ],
             ],
         ],
-        */
+        'db' => $db,
+        'urlManager' => [
+            'class' => 'yii\web\UrlManager',
+            // Disable index.php
+            'showScriptName' => false,
+            // Disable r= routes
+            'enablePrettyUrl' => true,
+            'rules' => [
+
+                '<controller:\w+>/<id:\d+>' => '<controller>/view',
+                '<controller:\w+>/<action:\w+>/<id:\d+>' => '<controller>/<action>',
+                '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
+
+            ],
+        ],
     ],
     'params' => $params,
 ];

@@ -7,8 +7,10 @@
 
 namespace app\commands;
 
+use app\models\db\TelebotConfiguration;
 use yii\console\Controller;
 use yii\console\ExitCode;
+use yii\helpers\Url;
 
 /**
  * This command echoes the first argument that you have entered.
@@ -29,6 +31,6 @@ class HelloController extends Controller
     {
         echo $message . "\n";
 
-        return ExitCode::OK;
+        print_r(Url::toRoute('hook',true));
     }
 }
