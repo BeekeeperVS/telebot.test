@@ -7,6 +7,7 @@
 
 namespace app\commands;
 
+use app\models\db\TelebotChat;
 use app\models\db\TelebotConfiguration;
 use yii\console\Controller;
 use yii\console\ExitCode;
@@ -30,9 +31,9 @@ class InitController extends Controller
     {
         print_r("----Start init----\n");
 
-
         $this->actionTelebotConfiguration();
 
+        $this->actionTelebotAnswer();
 
         print_r("----End init----\n");
     }
@@ -55,6 +56,26 @@ class InitController extends Controller
                 $configurationModel->save();
             }
 
+
+        }
+    }
+
+    public function actionTelebotAnswer()
+    {
+
+        print_r("----Start init Telebot Answer----\n");
+
+        $telebotChats = require __DIR__ . '/../components/init/telebotCommand.php';
+
+        foreach ($telebotChats as $telebotChat) {
+            $telebotChatModel = TelebotChat::find()
+                ->where(['user_question' => $telebotChat['user_question']])->one();
+            if (!$telebotChatModel) {
+                $telebotChatModel = new TelebotChat();
+                $telebotChatModel->user_question = $telebotChat['user_question'];
+                $telebotChatModel->bot_answer = $telebotChat['bot_answer'];
+                $telebotChatModel->save();
+            }
 
         }
     }
