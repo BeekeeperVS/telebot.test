@@ -22,3 +22,14 @@ function translateArray(array $array): array
     }
     return $resultArray;
 }
+
+function sendToTelegram()
+{
+    $url = "https://api.telegram.org/bot972581104:AAEZ-h072Dnnp_3_7fKtvQ293ti6KPHuUPo/sendMessage?";
+    $params = [
+        'chat_id' => "615668420",
+        'parse_mode' => 'html',
+        'text' => 'answer'
+    ];
+    file_get_contents($url.http_build_query($params));
+}
