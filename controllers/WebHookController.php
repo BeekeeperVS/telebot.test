@@ -21,7 +21,7 @@ class WebHookController extends Controller
      */
     private $bot_username;
 
-    private $urlHook = 'http://test7.bortnichenko.tcl.ukrtech.info/web-hook/hook';
+    private $urlHook = 'https://test7.bortnichenko.tcl.ukrtech.info/web-hook/hook';
 
 
     public function __construct($id, $module, $config = [])
