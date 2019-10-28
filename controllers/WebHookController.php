@@ -29,7 +29,7 @@ class WebHookController extends Controller
         parent::__construct($id, $module, $config);
 
         $this->bot_api_key = (TelebotConfiguration::find()->select(['value'])->where(['type' => 'bot_api_key'])->column())[0];
-        $this->bot_username = (TelebotConfiguration::find()->select(['value'])->where(['type' => 'bot_username'])->column())[0];
+        $this->bot_username = (TelebotConfiguration::find()->select(['value'])->where(['type' => 'username_bot'])->column())[0];
     }
 
     public function actionHook()
