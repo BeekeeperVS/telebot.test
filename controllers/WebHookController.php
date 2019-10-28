@@ -35,7 +35,7 @@ class WebHookController extends Controller
     public function actionHook()
     {
         $commands_paths = [
-            __DIR__ . '/../components/telegram/commands/',
+            '/../components/telegram/commands/',
         ];
 
         try {
