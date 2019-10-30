@@ -1,7 +1,5 @@
 <?php
 
-use aki\telegram\Telegram;
-use app\models\db\TelebotConfiguration;
 use yii\bootstrap\BootstrapAsset;
 
 $params = require __DIR__ . '/params.php';
@@ -12,6 +10,7 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'layout' => 'admin',
+    'defaultRoute' => 'telebot-chat/index',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
@@ -74,10 +73,6 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 
             ],
-        ],
-        'telegram' => [
-            'class' => Telegram::class,
-            'botToken' => '972581104:AAEZ-h072Dnnp_3_7fKtvQ293ti6KPHuUPo',
         ],
     ],
     'params' => $params,
