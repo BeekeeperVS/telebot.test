@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::button(TelebotConfiguration::getStatus() ? 'Active' : 'Disactive', [
                 'class' => ['btn', TelebotConfiguration::getStatus() ? 'btn-success' : 'btn-error', 'web-hook-active'],
                 'data' => [
-                        'url' => Url::to(['web-hook/status']),
+                    'url' => Url::to(['web-hook/status']),
                 ]
             ]) ?>
         </div>
@@ -44,7 +44,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'user_question',
             'bot_answer',
 
-            ['class' => ActionFilterColumn::class],
+            [
+                'class' => ActionFilterColumn::class,
+                'template' => '{update} {delete}'
+            ],
         ],
     ]); ?>
 
