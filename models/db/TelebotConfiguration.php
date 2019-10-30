@@ -16,6 +16,9 @@ use Yii;
  */
 class TelebotConfiguration extends \yii\db\ActiveRecord
 {
+    const STATUS_ACTIVE = '1';
+    const STATSU_DISACTIVE = '0';
+
     /**
      * {@inheritdoc}
      */
@@ -49,5 +52,43 @@ class TelebotConfiguration extends \yii\db\ActiveRecord
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    /**
+     * @param string $type
+     * @return string
+     */
+    public static function getValueByType(string $type): string
+    {
+        $model = self::find()->where(['type' => $type])->one();
+        return $model->value;
+    }
+
+    /**
+     * @param string $type
+     * @param string $value
+     */
+    public static function updateValueByType(string $type, string $value)
+    {
+        $model = self::find()->where(['type' => $type])->one();
+        $model->value = $value;
+        $model->save();
+    }
+
+    /**
+     * @return int
+     */
+    public static function getStatus(): int
+    {
+        return (int)(self::find()->select(['value'])->where(['type' => 'web_hook_status'])->column())[0];
+    }
+
+    /**
+     * @return string
+     */
+    public static function getTelebotUrl(): string
+    {
+        $telebotName = (self::find()->select(['value'])->where(['type' => 'username_bot'])->column())[0];
+        return 'https://t.me/' . $telebotName;
     }
 }

@@ -11,4 +11,14 @@ return [
         'title' => 'User name bot',
         'value' => 'Bortik_telebot',
     ],
+    [
+        'type' => 'web_hook_status',
+        'title' => 'Web hook Status',
+        'value' => '0',
+    ],
+    [
+        'type' => 'web_hook_url',
+        'title' => 'Web hook URL',
+        'value' => 'https://test7.bortnichenko.tcl.ukrtech.info/web-hook/hook',
+    ],
 ];

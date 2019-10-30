@@ -34,7 +34,8 @@ class AdminAsset extends AssetBundle
         'asset_admin/js/paper-dashboard.min.js',
         'asset_admin/js/popper.min.js',
         'asset_admin/js/demo.js',
-        'js/parserLink.js'
+        'js/parserLink.js',
+        'js/webHook.js'
     ];
     public $depends = [
         YiiAsset::class,

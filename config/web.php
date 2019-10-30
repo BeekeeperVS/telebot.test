@@ -1,5 +1,7 @@
 <?php
 
+use aki\telegram\Telegram;
+use app\models\db\TelebotConfiguration;
 use yii\bootstrap\BootstrapAsset;
 
 $params = require __DIR__ . '/params.php';
@@ -72,6 +74,10 @@ $config = [
                 '<controller:\w+>/<action:\w+>' => '<controller>/<action>',
 
             ],
+        ],
+        'telegram' => [
+            'class' => Telegram::class,
+            'botToken' => '972581104:AAEZ-h072Dnnp_3_7fKtvQ293ti6KPHuUPo',
         ],
     ],
     'params' => $params,

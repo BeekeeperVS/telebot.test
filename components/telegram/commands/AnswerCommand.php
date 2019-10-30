@@ -10,7 +10,7 @@ use Longman\TelegramBot\Exception\TelegramException;
 use Longman\TelegramBot\Request;
 
 /**
- * User "/echo" command
+ * User "/answer" command
  *
  * Simply echo the input back to the user.
  */
